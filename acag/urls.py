@@ -25,5 +25,12 @@ urlpatterns = [
     path('',include('accounts.urls')),
  
 ]
+
+if not settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
 # Add media serving for development
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
