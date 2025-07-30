@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Corporate Affairs By Gruv Enuff | Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-container {
+      width: 90%;
+      max-width: 800px;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+      outline: none;
+    }
+    /* Show video1 on large screens (≥768px) */
+    .video-container1 {
+      display: block;
+    }
+    .video-container2{
+      display: none;
+    }
+
+    /* Show video2 on small screens (<768px) */
+    @media (max-width: 767px) {
+      .video-container1 {
+        display: none;
+      }
+      .video-container2 {
+        display: block;
+      }
+    
+  </style>
+</head>
+<body>
+  <div class="video-container video-container1">
+    <video autoplay muted loop playsinline>
+      <source src="{{ video }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+    <div class="video-container video-container2">
+    <video autoplay muted loop playsinline>
+      <source src="{{ video2 }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</body>
+</html>
+
