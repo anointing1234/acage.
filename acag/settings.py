@@ -36,7 +36,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@@3-_+7gez+b$m^^3mb)4g=7w+&ecjj#l*%^vzl$&*qn^4d&wl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["https://acage.network"]
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'acag.urls'
@@ -134,6 +135,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # if DEBUG:
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

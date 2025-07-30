@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
 from django.conf import settings
+import os
 
 
 
@@ -22,10 +23,11 @@ from django.conf import settings
 logger = logging.getLogger(__name__)
 
 def home(request):
-    video_url = settings.MEDIA_URL + 'videos/Acage_6_Advert.mp4'
-    video_url2 = settings.MEDIA_URL + 'videos/Acage_6_Social_Media.mp4'
-    return render(request, 'index.html',{
+    video_url = f"{settings.MEDIA_URL}videos/Acage_Advert.mp4"
+    video_url2 = f"{settings.MEDIA_URL}videos/Acage_Social_Media.mp4"
+    print(f"Video 1 URL: {video_url}")  # Debug: should print /media/videos/Acage_6_Advert.mp4
+    print(f"Video 2 URL: {video_url2}")  # Debug: should print /media/videos/Acage_6_Social_Media.mp4
+    return render(request, 'index.html', {
         'video': video_url,
         'video2': video_url2
-        })
-
+    })
