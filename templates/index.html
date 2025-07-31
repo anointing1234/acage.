@@ -7,59 +7,80 @@
     <title>A Corporate Affairs By Gruv Enuff | Coming Soon</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" />
     <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .video-container {
-      width: 90%;
-      max-width: 800px;
-      aspect-ratio: 16 / 9;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: none;
-      outline: none;
-    }
-    /* Show video1 on large screens (≥768px) */
-    .video-container1 {
-      display: block;
-    }
-    .video-container2{
-      display: none;
-    }
-
-    /* Show video2 on small screens (<768px) */
-    @media (max-width: 767px) {
-      .video-container1 {
-        display: none;
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      .video-container2 {
+
+      .video-container {
+        width: 90%;
+        max-width: 800px;
+        aspect-ratio: 16 / 9;
+        box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: none;
+        outline: none;
+      }
+
+      .video-container1 {
         display: block;
       }
-    
-  </style>
+
+      .video-container2 {
+        display: none;
+      }
+
+      /* Mobile styles */
+      @media (max-width: 767px) {
+        body, html {
+          display: block;
+          overflow: hidden;
+        }
+
+        .video-container1 {
+          display: none;
+        }
+
+        .video-container2 {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 9999;
+        }
+
+        .video-container2 video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="video-container video-container1">
       <video autoplay muted loop playsinline>
-        <source src="{{ video }}" type="video/mp4" />Your browser does not support the video tag.
+        <source src="{{ video }}" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </div>
 
-    <div class="video-container video-container2">
+    <div class="video-container2">
       <video autoplay muted loop playsinline>
-        <source src="{{ video2 }}" type="video/mp4" />Your browser does not support the video tag.
+        <source src="{{ video2 }}" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </div>
   </body>
